@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label asp-for="Amount1">จำนวน</label>
-            <input type="number" asp-for="Amount1" class="form-control" min="1" max="5" value=1 />
+            <input type="number" asp-for="Amount1" class="form-control amount" min="1" max="5" value=1 />
         </div>
     </div>
     <div style="display: flex;">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group" id="amount2" hidden>
             <label asp-for="Amount2">จำนวน</label>
-            <input type="number" asp-for="Amount2" id="amount2value"  class="form-control" min="1" max="5" />
+            <input type="number" asp-for="Amount2" id="amount2value" class="form-control amount" min="1" max="5" />
         </div>
 
     </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group" id="amount3" hidden>
             <label asp-for="Amount3">จำนวน</label>
-            <input type="number" asp-for="Amount3" id="amount3value"  class="form-control" min="1" max="5" />
+            <input type="number" asp-for="Amount3" id="amount3value" class="form-control amount" min="1" max="5" />
         </div>
     </div>
     <div style="display: flex;">
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group" id="amount4" hidden>
             <label asp-for="Amount4">จำนวน</label>
-            <input type="number" asp-for="Amount4" id="amount4value"  class="form-control" min="1" max="5" />
+            <input type="number" asp-for="Amount4" id="amount4value" class="form-control amount" min="1" max="5" />
         </div>
     </div>
         <div style="display: flex;">
@@ -58,13 +58,13 @@
         </div>
         <div class="form-group" id="amount5" hidden>
             <label asp-for="Amount5">จำนวน</label>
-            <input type="number" asp-for="Amount5" id="amount5value"  class="form-control" min="1" max="5" />
+            <input type="number" asp-for="Amount5" id="amount5value" class="form-control amount" min="1" max="5" />
         </div>
     </div>
     <button type="button" class="btn btn-danger my-2" id="removeButton" hidden >Remove Menu</button>
     <button type="button" class="btn btn-primary my-2" id="addButton">Add Menu</button>
-    
-    <button type="submit" class="btn btn-primary my-2">Order</button>
+    <button type="submit" class="btn btn-primary my-2" id="submitButton">Order</button>
+    <span id="total">Total of Order : 1</span>
 </form>
 <script>
     var addButton = document.getElementById("addButton");
@@ -136,6 +136,23 @@
             item2.hidden = true;
             amount2.hidden = true;
             removeButton.hidden = true;
+        }
+    });
+
+    const amountInputs = document.querySelectorAll('.amount');
+    amountInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const total = Array.from(amountInputs).reduce((acc, input) => acc + parseInt(input.value || 0), 0);
+            document.getElementById('total').textContent = `Total of Order : ${total}`;
+            document.getElementById('submitButton').disabled = total > 6;
+        });
+    });
+
+    document.getElementById('submitButton').addEventListener('click', (event) => {
+        const total = Array.from(amountInputs).reduce((acc, input) => acc + parseInt(input.value || 0), 0);
+        if (total > 5) {
+            event.preventDefault();
+            alert('The total must be less than 5 to submit the form.');
         }
     });
 
