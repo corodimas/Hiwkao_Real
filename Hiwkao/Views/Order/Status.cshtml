@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SampleLogin.Models.Order>;
+@using Microsoft.AspNetCore.Identity
+@using SampleLogin.Areas.Identity.Data
+@inject UserManager<ApplicationUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@foreach (var order in Model)
+{
+    if (order.Status == "Ongoing" || order.Status =="Arrive")
+    {
+        <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+            <p>Order ID : @order.OrderId</p>
+             @for (int i = 1; i <= 5; i++)
+            {
+                var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
+                var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
+                if (amount > 0)
+                {
+                    <p1>เมนู : @menu</p1>
+                    <p>จำนวน : @amount</p>
+                }
+            }
+            <p>ที่รับ : @order.Destination</p>
+                    <p>ชื่อ Rider : @UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</p>
+
+            @if (await UserManager.GetUserAsync(User) != null && UserManager.GetUserAsync(User).Result.Id != order.UserId && order.Status != "Arrive")
+            {
+                <a class="btn btn-danger" asp-controller="Order" asp-action="Finish" asp-route-id="@order.OrderId">เสร็จสิ้น</a>
+            }
+            @if (order.Status == "Arrive")
+            {
+                <p>@order.Confirmation / 2 Waiting for customer comfirmation</p>
+
+                @if (UserManager.GetUserAsync(User).Result.Id != order.RiderId)
+                {
+                    <a class="btn btn-danger" asp-controller="Order" asp-action="Finish" asp-route-id="@order.OrderId">เสร็จสิ้น</a>
+                }
+            }
+            
+        </div>
+        <br />
+    }
+
+}

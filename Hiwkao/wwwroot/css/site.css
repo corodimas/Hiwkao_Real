@@ -1,0 +1,132 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+    background-size: cover;
+    backdrop-filter: blur(70px);
+}
+
+.loginBtn {
+    background: black;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-right: 20px;
+    width: 100px;
+}
+
+.loginBtn:hover {
+    background: rgb(0, 0, 0);
+    color: rgb(50, 199, 70);
+}
+
+.hiwBtn {
+    background: black;
+    color: aliceblue;
+    border-radius: 30px;
+    ;
+    width: 300px;
+    height: 50px;
+}
+
+.hiwBtn:hover {
+    background: black;
+    color: aliceblue;
+    border-radius: 30px;
+    ;
+    width: 300px;
+    height: 50px;
+    transform: scale(1.1);
+}
+
+.welc {
+    color: black;
+}
+
+.welco {
+    color: rgb(34, 121, 46);
+}
+
+.welText {
+    width: 100%;
+}
+
+.homePic {
+    width: 100%;
+}
+
+img.homePic {
+    -webkit-animation: mover 7s infinite alternate;
+    animation: mover 7s infinite alternate;
+}
+
+@-webkit-keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-3vh);
+    }
+}
+
+.button {
+    background: #000000;
+    color: #fff;
+    font-size: 27px;
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+    border-color: transparent;
+    width: 270px;
+    transform: scale(0.9)
+}
+
+    .button:hover {
+        box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+        -webkit-transform: translate(0px, -10px) scale(1.1);
+        transform: translate(0px, -10px) scale(1.1);
+        color: rgb(34, 121, 46);
+    }
+
+.welTexts {
+    color: white;
+}
+
+.flex__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.color__red {
+    color: rgb(255, 157, 30);
+}

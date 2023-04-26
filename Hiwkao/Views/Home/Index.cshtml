@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SampleLogin.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+    @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <button>login</button>
+        <button>logout</button>
+    }
+    <div>TotalView: </div>
+    <div>
+        <span id="totalViewsCounter"></span>
+    </div>
+    <a class="btn btn-danger" asp-controller="Order" asp-action="Index" >Buy Food</a>
+    <a class="btn btn-danger" asp-controller="Order" asp-action="RiderOrder">Become a Rider</a>
+</div>
+
+<script src="~/js/signalr.js"></script>
+<script src="~/js/Order.js"></script>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SampleLogin.Models.Order>
+@using Microsoft.AspNetCore.Identity
+@using SampleLogin.Areas.Identity.Data
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@inject UserManager<ApplicationUser> UserManager
+
+
+@foreach (var order in Model)
+{
+    <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+        @for (int i = 1; i <= 5; i++)
+        {
+            var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
+            var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
+            if (amount > 0)
+            {
+                <p1>เมนู : @menu</p1>
+                <p>จำนวน : @amount</p>
+            }
+        }
+        <p>สนานที่รับ : @order.Destination</p>
+        <a class="btn btn-danger" asp-controller="Order" asp-action="Cancel" asp-route-id="@order.OrderId">Cancel</a>
+    </div>
+    <br />
+}
+
