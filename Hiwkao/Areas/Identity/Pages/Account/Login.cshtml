@@ -3,45 +3,192 @@
 
 @{
     ViewData["Title"] = "Log in";
+    Layout = null;
 }
 
-<h1>@ViewData["Title"]</h1>
-<form id="account" method="post">
-    <h2>Use a local account to log in.</h2>
-    <hr />
-    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-    <div class="form-floating mb-3">
-        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-        <label asp-for="Input.Email" class="form-label">Email</label>
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
-    </div>
-    <div class="form-floating mb-3">
-        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-        <label asp-for="Input.Password" class="form-label">Password</label>
-        <span asp-validation-for="Input.Password" class="text-danger"></span>
-    </div>
-    <div class="checkbox mb-3">
-        <label asp-for="Input.RememberMe" class="form-label">
-            <input class="form-check-input" asp-for="Input.RememberMe" />
-            @Html.DisplayNameFor(m => m.Input.RememberMe)
-        </label>
-    </div>
-    <div>
-        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-    </div>
-    <div>
-        <p>
-            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-        </p>
-        <p>
-            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-        </p>
-        <p>
-            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-        </p>
-    </div>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins',sans-serif;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            background-color: black;
+            background: url("https://cdn.discordapp.com/attachments/1100176710722392094/1100866217507557556/IMG_0101.JPG")no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .form-box {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: transparent;
+            backdrop-filter: blur(70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+        }
+
+        .inputbox {
+            position: relative;
+            margin: 30px 0;
+            width: 310px;
+            border-bottom: 2px solid #fff;
+        }
+
+            .inputbox label {
+                position: absolute;
+                top: 50%;
+                left: 5px;
+                transform: translateY(-50%);
+                color: #fff;
+                font-size: 1em;
+                pointer-events: none;
+                transition: .5s;
+            }
+
+        input:focus ~ label,
+        input:valid ~ label {
+            top: -5px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            padding: 0 35px 0 5px;
+            color: #fff;
+        }
+
+        .inputbox ion-icon {
+            position: absolute;
+            right: 8px;
+            color: #fff;
+            font-size: 1.2em;
+            top: 20px;
+        }
+
+        .forget {
+            margin: -15px 0 15px;
+            font-size: .9em;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .forget label input {
+                margin-right: 3px;
+            }
+
+            .forget label a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+                .forget label a:hover {
+                    text-decoration: underline;
+                }
+
+        button {
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            background: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .register {
+            padding: 1vh;
+
+        }
+
+        .reg {
+            padding-bottom: 0.5vh;
+            font-size: .7em;
+            color: #fff;
+            text-align: center;
+            font-weight: 300;
+            
+        }
+
+
+        .reg:hover {
+            text-decoration: underline;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form id="account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <h2>Login</h2>
+
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" required />
+                        <label asp-for="Input.Email" class="form-label">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" required />
+                        <label asp-for="Input.Password" class="form-label">Password</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="forget checkbox mb-3">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input type="checkbox" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <div class="register">
+                        <a id="forgot-password" asp-page="./ForgotPassword"><p class="reg">Forgot your password?</p> </a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"> <p class="reg">Register as a new user </p></a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation"><p class="reg">Resend email confirmation</p></a>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+</html>

@@ -139,6 +139,7 @@ namespace SampleLogin.Controllers
             return View(allOrders);
         }
 
+        [Authorize]
         public IActionResult Store()
         {
             IEnumerable<Store> allOrders = _db.Stores;
