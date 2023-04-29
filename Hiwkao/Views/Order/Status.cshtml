@@ -26,7 +26,7 @@
                 }
             }
             <p>ที่รับ : @order.Destination</p>
-                    <p>ชื่อ Rider : @UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</p>
+                    <p>ชื่อ Rider : @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).FirstName @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).LastName</p>
 
             @if (await UserManager.GetUserAsync(User) != null && UserManager.GetUserAsync(User).Result.Id != order.UserId && order.Status != "Arrive")
             {

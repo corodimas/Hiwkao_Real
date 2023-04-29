@@ -128,7 +128,7 @@ namespace SampleLogin.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "your username or password is incorrect.");
                     return Page();
                 }
             }

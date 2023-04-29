@@ -1,0 +1,124 @@
+﻿@model IEnumerable<SampleLogin.Models.Order>;
+@using Microsoft.AspNetCore.Identity
+@using SampleLogin.Areas.Identity.Data
+@inject UserManager<ApplicationUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" type="text/css" href="~/css/Import.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<style>
+
+    body {
+        background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+        background-size: contain;
+        backdrop-filter: blur(70px);
+        background-repeat: repeat;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        padding: 3rem 0.5rem;
+        margin-bottom: 3%;
+        width: 60%;
+        height: 80%;
+        background-color: rgba(198, 198, 198, 0.15);
+        background-size: 0px;
+        border-radius: 40px;
+    }
+
+        .card .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    h3 {
+        text-align: center;
+        color: black;
+        background-color: rgb(197, 254, 197);
+        border-radius: 20px;
+        padding: 0.8rem 3rem;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .card .center img {
+        border-radius: 50%;
+        width: 40%;
+        height: 60%;
+    }
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: red;
+        color: white;
+        border-radius: 10px;
+        padding: 0.35rem 2.5rem;
+        text-decoration: none;
+    }
+
+        .button i {
+            margin: 0.1rem;
+        }
+
+</style>
+<body>
+    <div class="main">
+
+        @foreach (var order in Model)
+        {
+            if (order.Status == "Ongoing" || order.Status == "Arrive" || order.Status == "Canceling")
+            {
+                <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                    <p>Order ID : @order.OrderId</p>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
+                        var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
+                        if (amount > 0)
+                        {
+                            <p1>เมนู : @menu</p1>
+                            <p>จำนวน : @amount</p>
+                        }
+                    }
+                    <p>ที่รับ : @order.Destination</p>
+                    <p>ชื่อ Rider : @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).FirstName @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).LastName</p>
+                    @if (order.Status == "Arrive")
+                    {
+                        <p>@order.Confirmation / 2 Waiting for customer comfirmation</p>
+
+                        @if (UserManager.GetUserAsync(User).Result.Id != order.RiderId)
+                        {
+                            <a class="btn btn-danger" asp-controller="Customer" asp-action="Finish" asp-route-id="@order.OrderId">เสร็จสิ้น</a>
+                        }
+                    }
+                    else if (order.Status == "Canceling")
+                    {
+                        <a>Your rider want to cancel this order</a>
+                        <p>@order.Confirmation / 2 Waiting for customer comfirmation</p>
+                        <a class="btn btn-danger" asp-controller="Customer" asp-action="Cancel" asp-route-id="@order.OrderId">Yes</a>
+
+                    }
+
+                </div>
+                <br />
+            }
+
+        }
+    </div>
+</body>
+

@@ -35,7 +35,7 @@ body {
         background: black;
         color: aliceblue;
         border-radius: 30px;
-        ;
+        
         width: 300px;
         height: 50px;
         transform: scale(1.1);
@@ -106,5 +106,5 @@ img.homePic {
 }
 
 .color__red {
-    color: rgb(255, 157, 30);
+    color: rgb(34, 121, 46);
 }

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<SampleLogin.Models.Store>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" type="text/css" href="~/css/Import.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<style>
+
+    body {
+        background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+        background-size: contain;
+        backdrop-filter: blur(70px);
+        background-repeat: repeat;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .card {
+        padding: 3rem 0.5rem;
+        margin-bottom: 3%;
+        margin-left: 12%;
+        width: 16%;
+        background-color: rgba(198, 198, 198, 0.15);
+        background-size: 0px;
+        border-radius: 40px;
+    }
+
+        .card .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    h1 {
+        text-align: right;
+        margin: 0 17% 3% 0;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .card .center img {
+        border-radius: 50%;
+        width: 40%;
+        height: 60%;
+    }
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+        padding: 0.35rem 2.5rem;
+        text-decoration: none;
+    }
+
+        .button i {
+            margin: 0.1rem;
+        }
+
+    @@media (max-width: 1023px) {
+        body {
+            background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+            background-size: contain;
+            backdrop-filter: blur(70px);
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            width: 80%;
+        }
+    }
+</style>
+<body>
+    <div>
+        <h1> Choose Store</h1>
+        <div class="main">
+
+            @foreach (var store in Model)
+            {
+                <div class="card">
+
+                    <div class="center">
+                        <img src="@store.StoreImage">
+                        <h4>ร้าน : @store.name</h4>
+                        <a asp-controller="Customer" asp-action="CreateOrder" asp-route-StoreName="@store.name" class="button" asp-route-StoreName="@store.name"><i class="bi bi-cart4"></i>Shop</a>
+                    </div>
+                </div>
+                <br />
+            }
+
+        </div>
+    </div>
+</body>

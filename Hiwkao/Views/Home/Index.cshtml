@@ -7,37 +7,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="~/css/Home.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
 </head>
+
 <body class="container-fluid bg-danger">
-    <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-transparent">
-        <div class="container-fluid">
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbar1" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="wel">
         <div class="row">
             <div class="col-sm-1"></div>
-            <div class="textWel align-self-center col-sm-6">
+            <div class="align-self-center col-sm-6">
                 <h1 class="display-1 text-black fw-bold welc color-black" style="text-align: left;">
                     <i class="fa-brands fa-space-awesome"></i> Winner is always
                 </h1>
@@ -51,12 +30,13 @@
                     Let's order your food through <b class="color__red">HiwKao</b>
                 </h2>
 
-                <a  asp-controller="Order" asp-action="Index"><button class="button">buy food</button></a>
-                <a  asp-controller="Order" asp-action="RiderOrder"><button class="button">become a rider</button></a>
+                <a  asp-controller="Customer" asp-action="Index"><button class="button">buy food</button></a>
+                <a  asp-controller="Rider" asp-action="Index"><button class="button">become a rider</button></a>
             </div>
             <div class="flex__center col-sm-5">
                 <img src="https://cdn.discordapp.com/attachments/875778949970546789/1100731548979957781/IMG_0087.png" class="homePic" alt="HiwKao">
             </div>
+            
         </div>
     </div>
 </body>

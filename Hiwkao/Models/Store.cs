@@ -11,5 +11,7 @@ namespace SampleLogin.Models
         public string name { get; set; }
         public string destination { get; set; }
 
+        public string StoreImage { get; set; }
+
     }
 }

@@ -1,0 +1,159 @@
+﻿@model Order;
+@{
+    var test = ViewData["StoreName"];
+}
+
+<h1>@ViewData["StoreName"]</h1>
+<form method="POST" asp-controller="Customer" asp-action="CreateOrder">
+    <div class="form-group">
+        <input type="text" asp-for="StoreName" class="form-control" value=@test hidden />
+        <label asp-for="Destination">สถานที่รับ</label>
+        <input type="text" asp-for="Destination" class="form-control" />
+    </div>
+    <div style="display: flex;">
+        <div class="form-group">
+            <label asp-for="Menu1">เมนู</label>
+            <input type="text" asp-for="Menu1" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Amount1">จำนวน</label>
+            <input type="number" asp-for="Amount1" class="form-control amount" min="1" max="5" value=1 />
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div class="form-group" id="item2" hidden>
+            <label asp-for="Menu2">เมนู</label>
+            <input type="text" asp-for="Menu2" id="item2value" class="form-control" />
+        </div>
+        <div class="form-group" id="amount2" hidden>
+            <label asp-for="Amount2">จำนวน</label>
+            <input type="number" asp-for="Amount2" id="amount2value" class="form-control amount" min="1" max="5" />
+        </div>
+
+    </div>
+    <div style="display: flex;">
+        <div class="form-group" id="item3" hidden>
+            <label asp-for="Menu3">เมนู</label>
+            <input type="text" asp-for="Menu3" id="item3value" class="form-control" />
+        </div>
+        <div class="form-group" id="amount3" hidden>
+            <label asp-for="Amount3">จำนวน</label>
+            <input type="number" asp-for="Amount3" id="amount3value" class="form-control amount" min="1" max="5" />
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div class="form-group" id="item4" hidden>
+            <label asp-for="Menu4">เมนู</label>
+            <input type="text" asp-for="Menu4" id="item4value" class="form-control" />
+        </div>
+        <div class="form-group" id="amount4" hidden>
+            <label asp-for="Amount4">จำนวน</label>
+            <input type="number" asp-for="Amount4" id="amount4value" class="form-control amount" min="1" max="5" />
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div class="form-group" id="item5" hidden>
+            <label asp-for="Menu5">เมนู</label>
+            <input type="text" asp-for="Menu5" id="item5value" class="form-control" />
+        </div>
+        <div class="form-group" id="amount5" hidden>
+            <label asp-for="Amount5">จำนวน</label>
+            <input type="number" asp-for="Amount5" id="amount5value" class="form-control amount" min="1" max="5" />
+        </div>
+    </div>
+    <button type="button" class="btn btn-danger my-2" id="removeButton" hidden>Remove Menu</button>
+    <button type="button" class="btn btn-primary my-2" id="addButton">Add Menu</button>
+    <button type="submit" class="btn btn-primary my-2" id="submitButton">Order</button>
+    <span id="total">Total of Order : 1</span>
+</form>
+<script>
+    var addButton = document.getElementById("addButton");
+    addButton.addEventListener("click", function () {
+        var item2 = document.getElementById("item2");
+        var amount2 = document.getElementById("amount2");
+        var item3 = document.getElementById("item3");
+        var amount3 = document.getElementById("amount3");
+        var item4 = document.getElementById("item4");
+        var amount4 = document.getElementById("amount4");
+        var item5 = document.getElementById("item5");
+        var amount5 = document.getElementById("amount5");
+
+        if (item2.hidden && amount2.hidden) {
+            item2.hidden = false;
+            amount2.hidden = false;
+            removeButton.hidden = false;
+        } else if (item3.hidden && amount3.hidden) {
+            item3.hidden = false;
+            amount3.hidden = false;
+        } else if (item4.hidden && amount4.hidden) {
+            item4.hidden = false;
+            amount4.hidden = false;
+        } else if (item5.hidden && amount5.hidden) {
+            item5.hidden = false;
+            amount5.hidden = false;
+            addButton.hidden = true;
+        }
+    });
+
+    var removeButton = document.getElementById("removeButton");
+    removeButton.addEventListener("click", function () {
+        var item2 = document.getElementById("item2");
+        var item2value = document.getElementById("item2value");
+        var amount2 = document.getElementById("amount2");
+        var amount2value = document.getElementById("amount2value");
+        var item3 = document.getElementById("item3");
+        var item3value = document.getElementById("item3value");
+        var amount3 = document.getElementById("amount3");
+        var amount3value = document.getElementById("amount3value");
+        var item4 = document.getElementById("item4");
+        var item4value = document.getElementById("item4value");
+        var amount4 = document.getElementById("amount4");
+        var amount4value = document.getElementById("amount4value");
+        var item5 = document.getElementById("item5");
+        var item5value = document.getElementById("item5value");
+        var amount5 = document.getElementById("amount5");
+        var amount5value = document.getElementById("amount5value");
+
+        if (!item5.hidden && !amount5.hidden) {
+            item5value.value = "";
+            amount5value.value = "";
+            item5.hidden = true;
+            amount5.hidden = true;
+            addButton.hidden = false;
+        } else if (!item4.hidden && !amount4.hidden) {
+            item4value.value = "";
+            amount4value.value = "";
+            item4.hidden = true;
+            amount4.hidden = true;
+        } else if (!item3.hidden && !amount3.hidden) {
+            item3value.value = "";
+            amount3value.value = "";
+            item3.hidden = true;
+            amount3.hidden = true;
+        } else if (!item2.hidden && !amount2.hidden) {
+            item2value.value = "";
+            amount2value.value = "";
+            item2.hidden = true;
+            amount2.hidden = true;
+            removeButton.hidden = true;
+        }
+    });
+
+    const amountInputs = document.querySelectorAll('.amount');
+    amountInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const total = Array.from(amountInputs).reduce((acc, input) => acc + parseInt(input.value || 0), 0);
+            document.getElementById('total').textContent = `Total of Order : ${total}`;
+            document.getElementById('submitButton').disabled = total > 6;
+        });
+    });
+
+    document.getElementById('submitButton').addEventListener('click', (event) => {
+        const total = Array.from(amountInputs).reduce((acc, input) => acc + parseInt(input.value || 0), 0);
+        if (total > 5) {
+            event.preventDefault();
+            alert('The total must be less than 5 to submit the form.');
+        }
+    });
+
+</script>
