@@ -1,21 +1,30 @@
-﻿@model IEnumerable<SampleLogin.Models.Order>
+﻿@model IEnumerable<SampleLogin.Models.Order>;
+@using Microsoft.AspNetCore.Identity
+@using SampleLogin.Areas.Identity.Data
+@inject UserManager<ApplicationUser> UserManager
+@*
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
+    Layout = null;
 }
-
+</style>
 <link rel="stylesheet" type="text/css" href="~/css/Import.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 <style>
+    * {
+        font-family: 'poppins',sans-serif;
+    }
 
     body {
-        background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
-        background-size: contain;
+        background-image: url("https://media.discordapp.net/attachments/1035127653205811261/1101739237407207464/IMG_0126.jpg?width=468&height=702");
+        background-size: cover;
         backdrop-filter: blur(70px);
-        background-repeat: repeat;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
     .main {
@@ -26,82 +35,211 @@
     }
 
     .card {
-        padding: 3rem 0.5rem;
-        margin-bottom: 3%;
-        width: 60%;
-        height: 80%;
+        margin-left: 10%;
+        display: flex;
+        margin-top: 4%;
+        width: 80%;
+        height: 30%;
         background-color: rgba(198, 198, 198, 0.15);
+        border-radius: 20px;
         background-size: 0px;
-        border-radius: 40px;
     }
 
         .card .center {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 2%;
         }
+
+            .card .center .coll {
+                display: flex;
+                flex-direction: column;
+                margin: 2%;
+                width: 100%;
+            }
+
+                .card .center .coll .roww {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: 5rem;
+                    gap: 5%;
+                }
+
+    .head {
+        margin-left: 6rem;
+        font-size: 5rem;
+    }
 
     h3 {
         text-align: center;
-        color: black;
-        background-color: rgb(197, 254, 197);
-        border-radius: 20px;
-        padding: 0.8rem 3rem;
     }
 
-    h4 {
-        text-align: center;
-    }
-
-    .card .center img {
-        border-radius: 50%;
-        width: 40%;
-        height: 60%;
-    }
-
-    .button {
+    img {
         display: flex;
-        flex-direction: row;
         align-items: center;
-        background-color: red;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgb(66, 156, 66);
         color: white;
         border-radius: 10px;
-        padding: 0.35rem 2.5rem;
+        padding: 0.8rem 2.5rem;
         text-decoration: none;
     }
 
-        .button i {
-            margin: 0.1rem;
+    .butcen {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .button i {
+        margin: 0.1rem;
+    }
+
+    .row .widtho {
+        width: 6%;
+        background: grey;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-right: 4%;
+    }
+
+        .row .widtho .nav .nav-item {
+            width: 10%;
+            height: 10%;
         }
+
+    .heado {
+        background-color: rgb(40, 69, 1);
+        border-radius: 20px 20px 0 0px;
+        width: 100%;
+        color: white;
+        text-align: 2rem;
+    }
+
+    ion-icon:hover {
+        color: white;
+    }
+
+    @@media (max-width: 1023px) {
+        body {
+            background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+            background-size: cover;
+            backdrop-filter: blur(70px);
+            background-repeat: no-repeat;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            width: 80%;
+        }
+
+        .main .card {
+            padding: 3rem 0.5rem;
+            margin-bottom: 3%;
+            margin-left: 8%;
+            width: 100%;
+            background-color: rgba(198, 198, 198, 0.15);
+            background-size: 0px;
+            border-radius: 60px;
+        }
+
+        .row .widtho {
+            width: 15%;
+            background: grey;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin-right: 7%;
+        }
+    }
 
 </style>
 <body>
-    <div class="main">
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <div class="row">
+        <div class="col-md-3 widtho">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Status"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
 
-        @foreach (var order in Model)
-        {
-            if (order.Status == "Pending")
-            {
-                <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
-                    <p>Order ID : @order.OrderId</p>
-                    <p>ร้าน : @order.StoreName</p>
-                    @for (int i = 1; i <= 5; i++)
+                <li class="nav-item">
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="fast-food-outline"></ion-icon></a>
+                </li></a>
+                </li>
+                <li class="nav-item">
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="fast-food-outline"></ion-icon></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-9">
+            <div class="main">
+                <div class="roww"><div class="head"> Rider Order</div></div>
+
+                @foreach (var order in Model)
+                {
+
+                    @if (order.Status == "Pending")
+
                     {
-                        var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
-                        var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                        if (amount > 0)
-                        {
-                            <p1>เมนู : @menu</p1>
-                            <p>จำนวน : @amount</p>
-                        }
+                        <div class="card">
+                            <div class="center">
+                                <div class="coll">
+                                    <div class="roww"><h4>Order ID : @order.OrderId</h4></div>
+                                    <div class="roww">
+                                        <img src="https://s359.thaibuffer.com/rq/580/435/50/pagebuilder/dbc77e85-1cb6-44ff-a3d8-dc6b21f59d5a.jpg">
+                                    </div>
+                                    <div class="roww">
+                                        <h4>ร้าน : @order.StoreName</h4>
+                                        <h4>ที่รับ : @order.Destination</h4>
+                                    </div>
+
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
+                                        var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
+                                        @if (amount > 0)
+                                        {
+                                            <div class="roww">
+                                                <h4>เมนู : @menu</h4>
+                                                <h4>จำนวน : @amount</h4>
+                                            </div>
+
+                                        }
+                                    }
+                                    <div class="roww">
+                                    </div>
+                                    <div class="roww">   <a asp-controller="Customer" asp-action="Accept" asp-route-id="@order.OrderId" asp-method="post"><button class="button">Accept</button></a></div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
                     }
-                    <p>ที่รับ : @order.Destination</p>
-                    <a class="btn btn-danger" asp-controller="Rider" asp-action="Accept" asp-route-id="@order.OrderId" asp-method="post">Accept</a>
-                </div>
-                <br />
-            }
-        }
+
+                }
+            </div>
+        </div>
     </div>
 </body>
-
-

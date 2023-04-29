@@ -24,7 +24,6 @@ namespace Hiwkao.Controllers
 
             IEnumerable<Order> allOrders = _db.Orders;
             IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
-
             return View(filteredOrders);
         }
 

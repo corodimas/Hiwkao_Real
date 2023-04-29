@@ -1,71 +1,190 @@
 ﻿@model Order;
 @{
     var test = ViewData["StoreName"];
+    Layout=null;
 }
 
-<h1>@ViewData["StoreName"]</h1>
-<form method="POST" asp-controller="Customer" asp-action="CreateOrder">
-    <div class="form-group">
-        <input type="text" asp-for="StoreName" class="form-control" value=@test hidden />
-        <label asp-for="Destination">สถานที่รับ</label>
-        <input type="text" asp-for="Destination" class="form-control" />
-    </div>
-    <div style="display: flex;">
-        <div class="form-group">
-            <label asp-for="Menu1">เมนู</label>
-            <input type="text" asp-for="Menu1" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Amount1">จำนวน</label>
-            <input type="number" asp-for="Amount1" class="form-control amount" min="1" max="5" value=1 />
-        </div>
-    </div>
-    <div style="display: flex;">
-        <div class="form-group" id="item2" hidden>
-            <label asp-for="Menu2">เมนู</label>
-            <input type="text" asp-for="Menu2" id="item2value" class="form-control" />
-        </div>
-        <div class="form-group" id="amount2" hidden>
-            <label asp-for="Amount2">จำนวน</label>
-            <input type="number" asp-for="Amount2" id="amount2value" class="form-control amount" min="1" max="5" />
-        </div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
+
+<style>
+    body{
+        background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+        background-size: cover;
+        backdrop-filter: blur(70px);
+        background-repeat: no-repeat;
+    }
+    img{
+        width: 75%;
+        height: 50%;
+        border-radius: 40px;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding:5rem 5rem;
+    }
+    .main .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:fit-content;
+        heigth:fit-content;
+        padding: 3rem 6rem;
+        background-color:rgba(198, 198, 198, 0.15);
+        border-radius:20px;
+    }
+    .button-circle{
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        border:none;
+        background-color: white;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .button{
+        display:flex;
+        justify-items: start;
+        
+    }
+    .button-rd{
+        width: fit-content;
+        padding: 1rem 3.5rem;
+        border-radius: 40px;
+        font-weight: bold;
+        border: none;
+        
+    }
+    .button-rd :hover{
+        box-shadow: 40px #000;
+    }
+    .button-rd :hover{
+        box-shadow: 40px #000;
+    }
+    .button-rm{
+        width: fit-content;
+        padding: 0.8rem 1.6rem;
+        border-radius: 40px;
+        font-weight: bold;
+        margin-bottom: 10%;
+        border: none;
+    }
+    .top{
+        margin-top: 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    .form-control{
+        background: transparent;
+        border-bottom: #000 solid 2px;
+        border-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    .main  .center .form-group .form-control input{
+        outline: none;
+        border: none;
+    }
+   .form-control:focus,
+      .form-control:active {
+         background: transparent;
+         outline: none;
+         border: none;
+ }
+
+</style>
+
+<body>
+    <div class="main">
+        <div class="center">
+            <img src="https://s359.thaibuffer.com/rq/580/435/50/pagebuilder/dbc77e85-1cb6-44ff-a3d8-dc6b21f59d5a.jpg">
+            <h1>@ViewData["StoreName"]</h1>
+            <form method="POST" asp-controller="Customer" asp-action="CreateOrder">
+                <div class="form-group">
+                    <input type="text" asp-for="StoreName" class="form-control" value=@test hidden />
+                    <label asp-for="Destination">สถานที่รับ</label>
+                    <input type="text" asp-for="Destination" class="form-control" />
+                </div>
+                <div style="display: flex;">
+                    <div class="form-group">
+                        <label asp-for="Menu1">เมนู</label>
+                        <input type="text" asp-for="Menu1" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Amount1">จำนวน</label>
+                        <input type="number" asp-for="Amount1" class="form-control amount" min="1" max="5" value=1 />
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div class="form-group" id="item2" hidden>
+                        <label asp-for="Menu2">เมนู</label>
+                        <input type="text" asp-for="Menu2" id="item2value" class="form-control" />
+                    </div>
+                    <div class="form-group" id="amount2" hidden>
+                        <label asp-for="Amount2">จำนวน</label>
+                        <input type="number" asp-for="Amount2" id="amount2value" class="form-control amount" min="1" max="5" />
+                    </div>
+
+                </div>
+                <div style="display: flex;">
+                    <div class="form-group" id="item3" hidden>
+                        <label asp-for="Menu3">เมนู</label>
+                        <input type="text" asp-for="Menu3" id="item3value" class="form-control" />
+                    </div>
+                    <div class="form-group" id="amount3" hidden>
+                        <label asp-for="Amount3">จำนวน</label>
+                        <input type="number" asp-for="Amount3" id="amount3value" class="form-control amount" min="1" max="5" />
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div class="form-group" id="item4" hidden>
+                        <label asp-for="Menu4">เมนู</label>
+                        <input type="text" asp-for="Menu4" id="item4value" class="form-control" />
+                    </div>
+                    <div class="form-group" id="amount4" hidden>
+                        <label asp-for="Amount4">จำนวน</label>
+                        <input type="number" asp-for="Amount4" id="amount4value" class="form-control amount" min="1" max="5" />
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div class="form-group" id="item5" hidden>
+                        <label asp-for="Menu5">เมนู</label>
+                        <input type="text" asp-for="Menu5" id="item5value" class="form-control" />
+                    </div>
+                    <div class="form-group" id="amount5" hidden>
+                        <label asp-for="Amount5">จำนวน</label>
+                        <input type="number" asp-for="Amount5" id="amount5value" class="form-control amount" min="1" max="5" />
+                    </div>
+                </div>
+                <div class="top d-flex justify-content-center mt-1">
+                    <h5 id="total">Total of Order : 1</h5>
+                </div>
+                <div class="d-flex justify-content-center button mt-3">
+                    <div><button type="button" class="button-circle" id="addButton"><h2>+</h2></button></div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="button-rm" id="removeButton" hidden>Remove Menu</button>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="button-rd" id="submitButton">Order</button>
+                </div>
+
+
+            </form>
+
+        </div>
     </div>
-    <div style="display: flex;">
-        <div class="form-group" id="item3" hidden>
-            <label asp-for="Menu3">เมนู</label>
-            <input type="text" asp-for="Menu3" id="item3value" class="form-control" />
-        </div>
-        <div class="form-group" id="amount3" hidden>
-            <label asp-for="Amount3">จำนวน</label>
-            <input type="number" asp-for="Amount3" id="amount3value" class="form-control amount" min="1" max="5" />
-        </div>
-    </div>
-    <div style="display: flex;">
-        <div class="form-group" id="item4" hidden>
-            <label asp-for="Menu4">เมนู</label>
-            <input type="text" asp-for="Menu4" id="item4value" class="form-control" />
-        </div>
-        <div class="form-group" id="amount4" hidden>
-            <label asp-for="Amount4">จำนวน</label>
-            <input type="number" asp-for="Amount4" id="amount4value" class="form-control amount" min="1" max="5" />
-        </div>
-    </div>
-    <div style="display: flex;">
-        <div class="form-group" id="item5" hidden>
-            <label asp-for="Menu5">เมนู</label>
-            <input type="text" asp-for="Menu5" id="item5value" class="form-control" />
-        </div>
-        <div class="form-group" id="amount5" hidden>
-            <label asp-for="Amount5">จำนวน</label>
-            <input type="number" asp-for="Amount5" id="amount5value" class="form-control amount" min="1" max="5" />
-        </div>
-    </div>
-    <button type="button" class="btn btn-danger my-2" id="removeButton" hidden>Remove Menu</button>
-    <button type="button" class="btn btn-primary my-2" id="addButton">Add Menu</button>
-    <button type="submit" class="btn btn-primary my-2" id="submitButton">Order</button>
-    <span id="total">Total of Order : 1</span>
-</form>
+
+
+</body>
 <script>
     var addButton = document.getElementById("addButton");
     addButton.addEventListener("click", function () {
