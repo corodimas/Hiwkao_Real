@@ -24,6 +24,7 @@ namespace Hiwkao.Controllers
 
             IEnumerable<Order> allOrders = _db.Orders;
             IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
+            ViewBag.StoreImage = _db.Stores;
             return View(filteredOrders);
         }
 
@@ -36,6 +37,8 @@ namespace Hiwkao.Controllers
         public IActionResult CreateOrder(string storeName)
         {
             ViewData["StoreName"] = storeName;
+            var obj = _db.Stores.FirstOrDefault(s => s.name == storeName);
+            ViewBag.StoreImage = obj;
             return View();
         }
 

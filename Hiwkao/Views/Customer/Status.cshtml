@@ -7,137 +7,117 @@
 *@
 @{
     Layout = null;
-}
 
+}
 <link rel="stylesheet" type="text/css" href="~/css/Import.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <style>
-    * {
-        font-family: 'poppins',sans-serif;
-    }
 
     body {
-        background-image: url("https://media.discordapp.net/attachments/1035127653205811261/1101739237407207464/IMG_0126.jpg?width=468&height=702");
+        background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
         background-size: cover;
-        backdrop-filter: blur(70px);
-        background-repeat: no-repeat;
-        background-position: center;
+        backdrop-filter: blur(150px);
+        background-repeat: repeat;
     }
 
     .main {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: start;
     }
 
     .card {
-        margin-left: 10%;
-        display: flex;
-        margin-top: 4%;
-        width: 80%;
-        height: 30%;
-        background-color: rgba(198, 198, 198, 0.15);
-        border-radius: 20px;
-        background-size: 0px;
+        padding: 3rem 0.5rem;
+        margin-bottom: 3%;
+        margin-left: 8%;
+        width: 16%;
+        background-color: rgba(35, 43, 43, 0.35);
+        border-radius: 40px;
+        border: none;
+        box-shadow: 0px 0px 20px rgba(0,0,0, 0.3);
     }
 
         .card .center {
             display: flex;
-            margin-bottom: 2%;
+            flex-direction: column;
+            align-items: center;
         }
 
-            .card .center .coll {
-                display: flex;
-                flex-direction: column;
-                margin: 2%;
-                width: 100%;
-            }
-
-                .card .center .coll .roww {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    width: 100%;
-                    margin-top: 5rem;
-                    gap: 5%;
-                }
-
-    .head {
-        margin-left: 6rem;
-        font-size: 5rem;
+    h1 {
+        text-align: right;
+        margin: 0 5% 3% 0;
     }
 
-    h3 {
+    h4 {
         text-align: center;
     }
 
-    img {
-        display: flex;
-        align-items: center;
-        width: 15rem;
-        height: 15rem;
-        border-radius: 50%;
+    .card .center img {
+        border-radius: 20px;
+        width: 80%;
+        height: 60%;
+    }
+
+    .card:hover {
+        box-shadow: 0px 0px 30px rgba(192,192,192, 0.5);
+        background-color: rgba(0, 26, 0,0.2)
     }
 
     .button {
         display: flex;
-        justify-content: center;
+        transform: scale(1.5);
+        flex-direction: row;
         align-items: center;
-        width: fit-content;
-        height: fit-content;
-        background-color: rgb(66, 156, 66);
+        background-color: green;
         color: white;
-        border-radius: 10px;
-        padding: 0.8rem 2.5rem;
+        border-radius: 20px;
+        padding: 0.35rem 2.5rem;
         text-decoration: none;
     }
 
-    .butcen {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-    }
+        .button i {
+            margin: 0.1rem;
+        }
 
-    .button i {
-        margin: 0.1rem;
-    }
+        .button:hover {
+            transform: scale(1.3);
+            background-color: black;
+            color: white;
+            box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
+        }
 
     .row .widtho {
-        width: 6%;
-        background: grey;
-        height: 100vh;
+        width: 3%;
+        background: rgba(0,0,0, 0.2);
+        margin: auto 0;
+        opacity: 50%;
+        height: 50vh;
         display: flex;
         justify-content: center;
         align-content: center;
-        margin-right: 4%;
+        margin-right: 7%;
+        border-radius: 20px;
     }
 
         .row .widtho .nav .nav-item {
-            width: 10%;
-            height: 10%;
+            width: 100%;
+            height: 20%;
+            background-color: transparent;
         }
 
-    .heado {
-        background-color: rgb(40, 69, 1);
-        border-radius: 20px 20px 0 0px;
-        width: 100%;
-        color: white;
-        text-align: 2rem;
+    .nav-link {
+        color: black;
     }
 
-    ion-icon:hover {
-        color: white;
-    }
 
-    @@media (max-width: 1023px) {
+
+    @@media (max-width: 1023px;) {
         body {
             background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
-            background-size: cover;
+            background-size: contain;
             backdrop-filter: blur(70px);
-            background-repeat: no-repeat;
         }
 
         .main {
@@ -146,31 +126,26 @@
         }
 
         .card {
-            display: flex;
-            flex-direction: column;
             width: 80%;
         }
-
-        .main .card {
-            padding: 3rem 0.5rem;
-            margin-bottom: 3%;
-            margin-left: 8%;
-            width: 100%;
-            background-color: rgba(198, 198, 198, 0.15);
-            background-size: 0px;
-            border-radius: 60px;
-        }
-
-        .row .widtho {
-            width: 15%;
-            background: grey;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            margin-right: 7%;
-        }
     }
+
+    ion-icon {
+        color: white;
+        display: flex;
+    }
+
+        ion-icon:hover {
+            color: black;
+            transform: scale(1.5);
+        }
+
+        ion-icon.black-icon {
+            color: black;
+            transform: scale(1.5);
+            background-color: white;
+            border-radius: 5px;
+        }
 </style>
 <body>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -179,15 +154,16 @@
         <div class="col-md-3 widtho">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon size="large" name="bag-handle-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon  size="large" name="bag-check-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon"  size="large" name="fast-food-outline"></ion-icon></a></li>
+
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="fast-food-outline"></ion-icon></a>
-                </li></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon></a>
                 </li>
+
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="fast-food-outline"></ion-icon></button>
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon></button>
                     </form>
                 </li>
             </ul>

@@ -198,7 +198,7 @@
                 <div class="head">Status</div>
                 @foreach (var order in Model)
                 {
-                    if (order.Status == "Ongoing" || order.Status == "Arrive")
+                    if (order.Status != "Success")
                     {
                         <div class="card">
                             <div class="center">
