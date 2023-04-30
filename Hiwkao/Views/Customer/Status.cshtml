@@ -37,7 +37,7 @@
         display: flex;
         margin-top: 4%;
         padding: 1rem 3rem;
-        width: 80%;
+        width: 70%;
         height: fit-content;
         box-shadow: 0px 0px 20px rgba(255,255,255, 0.3);
         background-color: rgba(35, 43, 43, 0.25);
@@ -110,7 +110,12 @@
         border-radius: 30px;
         padding: 0.8rem 2.5rem;
         text-decoration: none;
+        border:none;
+        font-size:150%;
     }
+    .button-green:hover{
+            background-color: rgb(0, 128, 0);
+        }
 
     .butcen {
         display: flex;
@@ -169,6 +174,18 @@
         color: white;
         text-align: 2rem;
     }
+    .btn{
+        border:none;
+        font-size: 150%;
+        background-color: rgb(204, 0, 0);
+    }
+    a{
+        text-decoration:none;
+    }
+    .btn:hover{
+        background-color: rgb(153, 0, 0);
+        color: white;
+    }
 
 
 
@@ -214,14 +231,13 @@
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon"  size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
 
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon><div class="text-none">Manage</div></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="settings-outline"></ion-icon><div class="text-none">Manage</div></a>
                 </li>
 
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></button>
+                        <button id="logout" type="submit" class="nav-link  text-dark border-0"><ion-icon size="large" name="exit-outline"></ion-icon><div class="text-none">Logout</div></button>
                     </form>
-                </li>
                 </li>
             </ul>
         </div>
@@ -237,7 +253,7 @@
                             <div class="center">
                                 <div class="coll">
                                     <div class="roww text-center">
-                                        <h1>Order ID : @order.OrderId</h1>
+                                        <h1><strong>Order ID : @order.OrderId</strong></h1>
 
                                     </div>
                                     <div class="roww text-center">
@@ -260,7 +276,10 @@
                                         }
                                     }
                                     <div class="roww">  <h4>Location : @order.Destination</h4></div>
-                                    <div class="roww"> <h4>Rider : @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).FirstName @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).LastName</h4></div>
+                                    @{
+                                        var riderod = UserManager.Users.FirstOrDefault(u => u.Id == order.RiderId);
+                                    }
+                                    <div class="roww"> <h4>Rider : @riderod.FirstName @riderod.LastName</h4></div>
 
 
 
@@ -278,7 +297,7 @@
                                     {
                                         <div class="roww">  <h4>Your rider want to cancel this order</h4></div>
                                         <div class="roww"> <h4>@order.Confirmation / 2 Waiting for customer comfirmation</h4></div>
-                                        <div class="roww"> <a class="" asp-controller="Customer" asp-action="Cancel" asp-route-id="@order.OrderId"><button class="button-red">Cancel</button></a></div>
+                                        <div class="roww"> <a class="" asp-controller="Customer" asp-action="Cancel" asp-route-id="@order.OrderId"><button class="btn button-red">Cancel</button></a></div>
 
 
 

@@ -73,7 +73,6 @@
 
     h3 {
         text-align: center;
-        background-color: red;
     }
 
     img {
@@ -96,7 +95,12 @@
         padding: 0.8rem 2.5rem;
         text-decoration: none;
         margin: 2%;
+        border:none;
+        font-size:150%;
     }
+    .button-green:hover{
+            background-color: rgb(0, 128, 0);
+        }
 
     .button-red {
         display: flex;
@@ -104,12 +108,19 @@
         align-items: center;
         width: 20%;
         height: fit-content;
-        background-color: red;
+        background-color: rgb(204, 0, 0);
         color: white;
         border-radius: 40px;
         padding: 0.8rem 2.5rem;
         text-decoration: none;
         margin: 2%;
+        border:none;
+        font-size: 150%;
+    }
+
+    .button-red:hover {
+        background-color: rgb(153, 0, 0);
+        color: white;
     }
 
     .butcen a {
@@ -224,12 +235,12 @@
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Index"><ion-icon  size="large" name="bicycle-outline"></ion-icon><div class="text-none">Index</div></a></li>
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon><div class="text-none">Manage</div></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="settings-outline"></ion-icon><div class="text-none">Manage</div></a>
                 </li>
 
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <a id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></a>
+                        <button id="logout" type="submit" class="nav-link text-dark border-0"><ion-icon size="large" name="exit-outline"></ion-icon><div class="text-none">Logout</div></button>
                     </form>
                 </li>
             </ul>
@@ -239,6 +250,7 @@
                 <div class="head">⏳ Status</div>
                 @foreach (var order in Model.Orders)
                 {
+                    
                     var store = @Model.Stores.FirstOrDefault(s => s.name == order.StoreName);
                     if (order.Status != "Sucess")
                     {
@@ -246,8 +258,7 @@
                             <div class="center">
                                 <div class="coll">
                                     <div class="roww text-center">
-                                        <h1>Order ID : @order.OrderId</h1>
-
+                                        <h1><strong>Order ID : @order.OrderId</strong></h1>
                                     </div>
                                     <div class="roww text-center">
                                         <img src="@store.StoreImage">
@@ -258,36 +269,30 @@
                                         var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
                                         if (amount > 0)
                                         {
-
                                             <div class="roww">
-                                                <h4>Menu : @menu</h4>
-                                                <h4>Amount : @amount</h4>
+                                                <h3>Menu : @menu</h3>
+                                                <h3>Amount : @amount</h3>
                                             </div>
-
-
-
                                         }
                                     }
+                                    @{
+                                        var userod = UserManager.Users.FirstOrDefault(u => u.Id == order.UserId);
+                                    }
                                     <div class="roww">
-                                        <h4>ที่รับ : @order.Destination</h4>
-                                        <h4>ชื่อ Rider : @UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</h4>
+                                        <h3>Location : @order.Destination</h3>
+                                        <h3>Customer : @userod.FirstName @userod.LastName</h3>
+                                        <h3>Telephone : @userod.PhoneNumber</h3>
                                     </div>
                                     @if (order.Status == "Ongoing")
                                     {
-                                        <div class="butcen"> <a class="" asp-controller="Rider" asp-action="Finish" asp-route-id="@order.OrderId"><button class='button-green'>เสร็จสิ้น</button></a></div>
-                                        <div class="butcen"><a class="" asp-controller="Rider" asp-action="Cancel" asp-route-id="@order.OrderId"><button class='button-red'>ยกเลิก</button></a></div>
-
-
-
+                                        <div class="butcen"> <a class="" asp-controller="Rider" asp-action="Finish" asp-route-id="@order.OrderId"><button class='button-green'>Success</button></a></div>
+                                        <div class="butcen"><a class="" asp-controller="Rider" asp-action="Cancel" asp-route-id="@order.OrderId"><button class='button-red'>Cancel</button></a></div>
                                     }
                                     else
                                     {
-                                        <p>@order.Confirmation / 2 Waiting for customer comfirmation</p>
+                                        <div class="roww"> <p>@order.Confirmation / 2 Waiting for customer comfirmation</p></div>
                                     }
-
                                 </div>
-
-
                             </div>
                         </div>
                         <br />

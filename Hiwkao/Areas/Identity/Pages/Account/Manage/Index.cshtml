@@ -9,7 +9,8 @@
         background-image: url("https://media.discordapp.net/attachments/1035127653205811261/1101187166232641737/IMG_0120.jpg?width=260&height=325");
         background-size: cover;
         backdrop-filter: blur(70px);
-        background-repeat: repeat;
+
+            padding-bottom: 10%;
     }
 
     * {
@@ -26,6 +27,7 @@
         display: flex;
         justify-content: center;
         background-size: cover;
+        margin-top: 5%;
     }
 
     .form-value { /* Fallback color */
@@ -54,7 +56,7 @@
     }
 
     button {
-        padding: 1rem 3rem;
+        padding: 1rem 2rem;
         background-color: #000;
         color: #fff;
         border-radius: 20px;
@@ -73,13 +75,17 @@
     .box {
         display: flex;
         align-content: center;
+        margin-top: 20%;
         height: 100%;
     }
 
     .itext {
-        height: 40%;
+        padding-top: 40%;
         width: 100%;
     }
+     @@media (min-width: 768px) and (max-width: 1022px){
+        
+     }
 
 </style>
 
@@ -88,18 +94,18 @@
     <div class="d-flex justify-content-center">
         <div class="form-box d-flex justify-self-center">
             <div class="form-value row d-flex justify-content-center">
-                <div class="box col-md-6 d-flex align-content-center">
+                <div class="box col-md-6 d-flex ">
                     <!--<h2 class="text-center">@ViewData["Title"]</h2>-->
-                    <form class="itext d-flex justify-content-center align-self-center" id="profile-form" method="post" enctype="multipart/form-data">
+                    <form class="itext d-flex justify-content-center " id="profile-form" method="post" enctype="multipart/form-data">
                         <div class="">
-                            <div class="col-md-6 d-flex align-content-center">
+                            <div class="col-md-6 d-flex ">
                                 <div class="form-group">
                                     <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
                                     <input type="file" id="profilePictureInput" accept=".png,.jpg,.jpeg,.gif,.tif" asp-for="Input.ProfilePicture" class="form-control" style="display: none" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" required />
 
                                     <div class="pic d-flex justify-self-center">
                                         <label for="profilePictureInput">
-                                            <img id="profilePicture" style="width:350px;height:350px; object-fit:cover;border-radius:50%;" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
+                                            <img id="profilePicture" style="width:200px;height:200px; object-fit:cover;border-radius:50%;" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
                                         </label>
                                     </div>
                                     <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>

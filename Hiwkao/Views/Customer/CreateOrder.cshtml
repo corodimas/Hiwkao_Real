@@ -113,57 +113,57 @@
             <form method="POST" asp-controller="Customer" asp-action="CreateOrder">
                 <div class="form-group">
                     <input type="text" asp-for="StoreName" class="form-control" value=@test hidden />
-                    <label asp-for="Destination">สถานที่รับ</label>
+                    <label asp-for="Destination">Location</label>
                     <input type="text" asp-for="Destination" class="form-control" />
                 </div>
                 <div style="display: flex;">
                     <div class="form-group">
-                        <label asp-for="Menu1">เมนู</label>
+                        <label asp-for="Menu1">Menu</label>
                         <input type="text" asp-for="Menu1" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Amount1">จำนวน</label>
+                        <label asp-for="Amount1">Amount</label>
                         <input type="number" asp-for="Amount1" class="form-control amount" min="1" max="5" value=1 />
                     </div>
                 </div>
                 <div style="display: flex;">
                     <div class="form-group" id="item2" hidden>
-                        <label asp-for="Menu2">เมนู</label>
+                        <label asp-for="Menu2">Menu</label>
                         <input type="text" asp-for="Menu2" id="item2value" class="form-control" />
                     </div>
                     <div class="form-group" id="amount2" hidden>
-                        <label asp-for="Amount2">จำนวน</label>
+                        <label asp-for="Amount2">Amount</label>
                         <input type="number" asp-for="Amount2" id="amount2value" class="form-control amount" min="1" max="5" />
                     </div>
 
                 </div>
                 <div style="display: flex;">
                     <div class="form-group" id="item3" hidden>
-                        <label asp-for="Menu3">เมนู</label>
+                        <label asp-for="Menu3">Menu</label>
                         <input type="text" asp-for="Menu3" id="item3value" class="form-control" />
                     </div>
                     <div class="form-group" id="amount3" hidden>
-                        <label asp-for="Amount3">จำนวน</label>
+                        <label asp-for="Amount3">Amount</label>
                         <input type="number" asp-for="Amount3" id="amount3value" class="form-control amount" min="1" max="5" />
                     </div>
                 </div>
                 <div style="display: flex;">
                     <div class="form-group" id="item4" hidden>
-                        <label asp-for="Menu4">เมนู</label>
+                        <label asp-for="Menu4">Menu</label>
                         <input type="text" asp-for="Menu4" id="item4value" class="form-control" />
                     </div>
                     <div class="form-group" id="amount4" hidden>
-                        <label asp-for="Amount4">จำนวน</label>
+                        <label asp-for="Amount4">Amount</label>
                         <input type="number" asp-for="Amount4" id="amount4value" class="form-control amount" min="1" max="5" />
                     </div>
                 </div>
                 <div style="display: flex;">
                     <div class="form-group" id="item5" hidden>
-                        <label asp-for="Menu5">เมนู</label>
+                        <label asp-for="Menu5">Menu</label>
                         <input type="text" asp-for="Menu5" id="item5value" class="form-control" />
                     </div>
                     <div class="form-group" id="amount5" hidden>
-                        <label asp-for="Amount5">จำนวน</label>
+                        <label asp-for="Amount5">Amount</label>
                         <input type="number" asp-for="Amount5" id="amount5value" class="form-control amount" min="1" max="5" />
                     </div>
                 </div>

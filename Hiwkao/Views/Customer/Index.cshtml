@@ -66,7 +66,7 @@
                     flex-direction: column;
                     justify-content: center;
                     margin-left: 1rem;
-                    margin-top: 5rem;
+                    margin-top: 1rem;
                 }
 
     .head {
@@ -78,6 +78,7 @@
         color: white;
         opacity: 70%;
         text-align: center;
+        
     }
 
     h1 {
@@ -248,7 +249,7 @@
 
                                     var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
                                     var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                                    if (amount > 0 && count <= 3)
+                                    if (amount > 0 && count <3)
                                     {
 
                                         <div class="showmenu roww w-25">
@@ -258,10 +259,6 @@
                                         count++;
                                     }
 
-                                }
-                                @if (count > 3)
-                                {
-                                    <p>...</p>
                                 }
                                 <div class='roww w-25'>
                                     <h4>Location : @order.Destination</h4>

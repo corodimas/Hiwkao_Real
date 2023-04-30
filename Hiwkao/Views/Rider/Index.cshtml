@@ -66,7 +66,7 @@
                     flex-direction: column;
                     justify-content: center;
                     margin-left: 1rem;
-                    margin-top: 5rem;
+                    margin-top: 1rem;
                 }
 
     .head {
@@ -97,17 +97,18 @@
         justify-content: center;
         align-items: center;
         width: fit-content;
-        background-color: rgb(204, 0, 0);
+        background-color: rgb(66, 156, 66);
         color: white;
         font-size: 150%;
         border-radius: 10px;
         padding: 0.8rem 2.5rem;
         text-decoration: none;
         border-radius: 30px;
+        border: none;
     }
 
         .button:hover {
-            background-color: rgb(153, 0, 0);
+            background-color: rgb(0, 128, 0);
             color: white;
         }
 
@@ -247,24 +248,21 @@
 
                                     var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
                                     var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                                    if (amount > 0 && count <= 3)
+                                    if (amount > 0 && count < 5)
                                     {
 
                                         <div class="showmenu roww w-25">
-                                            <h4>Menu : @menu</h4>
-                                            <h4>Amount : @amount</h4>
+                                            <h5>Menu : @menu</h5>
+                                            <h5>Amount : @amount</h5>
                                         </div> 
                                         count++;
                                     }
 
                                 }
-                                @if (count > 3)
-                                {
-                                    <p>...</p>
-                                }
+           
                                 <div class='roww w-25'>
-                                    <h4>Location : @order.Destination</h4>
-                                    <h4>Status : @order.Status</h4>
+                                    <h5>Location : @order.Destination</h5>
+                                    <h5>Status : @order.Status</h5>
                                 </div>
                                 <div class="roww">
                                     <a asp-controller="Rider" asp-action="Accept" asp-route-id="@order.OrderId" asp-method="post"><button class="button">Accept</button></a>
