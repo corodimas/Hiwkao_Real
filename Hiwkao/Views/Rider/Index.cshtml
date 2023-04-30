@@ -254,7 +254,7 @@
 
                                     var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
                                     var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                                    if (amount > 0 && count < 5)
+                                    if ((amount > 0 && menu != "No"))
                                     {
 
                                         <div class="showmenu roww w-25">

@@ -235,7 +235,7 @@
             <div class="main">
                 @if (!Model.Orders.Any())
                 {
-                   <h1 style="margin-top:30%">No orders have been placed yet.</h1> 
+                      <h1 style="margin-top:30%">No orders have been placed yet.</h1> 
                 }
                 @foreach (var order in Model.Orders)
                 {
@@ -257,7 +257,7 @@
 
                                     var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
                                     var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                                    if (amount > 0 && count <3)
+                                    if ((amount > 0 && menu !="No"))
                                     {
 
                                         <div class="showmenu roww w-25">
