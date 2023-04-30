@@ -283,11 +283,12 @@
                                     }
                                     @{
                                         var userod = UserManager.Users.FirstOrDefault(u => u.Id == order.UserId);
+                                        
                                     }
                                     <div class="roww">
                                         <h3>Location : @order.Destination</h3>
                                         <h3>Customer : @userod.FirstName @userod.LastName</h3>
-                                        <h3>Telephone : @userod.PhoneNumber</h3>
+                                        <h3>Telephone :  0-@userod.PhoneNumber</h3>
                                     </div>
                                     @if (order.Status == "Ongoing")
                                     {
