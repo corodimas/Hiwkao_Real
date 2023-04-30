@@ -210,9 +210,10 @@
 
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <a id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></a>
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></button>
                     </form>
                 </li>
+    </li>
             </ul>
         </div>
         <div class="col-md-9">

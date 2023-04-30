@@ -18,11 +18,10 @@
     }
 
     body {
-        background-image: url("https://media.discordapp.net/attachments/1035127653205811261/1101739237407207464/IMG_0126.jpg?width=468&height=702");
+        background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
         background-size: cover;
-        backdrop-filter: blur(70px);
-        background-position: center;
-        background-repeat: no-repeat;
+        backdrop-filter: blur(150px);
+        background-repeat: repeat;
     }
 
     .main {
@@ -35,12 +34,13 @@
     .card {
         margin-left: 10%;
         display: flex;
-        justify-items: center;
         margin-top: 4%;
         width: 80%;
-        height: 30%;
-        background-color: white;
-        border-radius: 20px;
+        height: 40%;
+        box-shadow: 0px 0px 20px rgba(0,0,0, 0.3);
+        background-color: rgba(255,255,255, 0.25);
+        border-radius: 30px;
+        border: none;
         background-size: 0px;
     }
 
@@ -65,13 +65,16 @@
                 }
 
     .head {
-        background-color: rgb(40, 69, 1);
+        background-color: rgb(0, 26, 0);
         border-radius: 20px 20px 0 0px;
         width: 100%;
+        height: 100%;
+        padding: 2%;
         color: white;
+        opacity: 70%;
     }
 
-    h3 {
+    h1 {
         text-align: center;
     }
 
@@ -88,11 +91,23 @@
         justify-content: center;
         align-items: center;
         width: fit-content;
-        background-color: red;
+        background-color: rgb(204, 0, 0);
         color: white;
+        font-size: 150%;
         border-radius: 10px;
         padding: 0.8rem 2.5rem;
         text-decoration: none;
+        border-radius: 30px;
+    }
+
+        .button:hover {
+            background-color: rgb(153, 0, 0);
+            color: white;
+        }
+
+    a {
+        text-decoration: none;
+        color: white;
     }
 
     .butcen {
@@ -183,7 +198,7 @@
 
     ion-icon:hover + .text-none {
         display: block;
-        text-align
+    }
 </style>
 <body>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -193,7 +208,7 @@
             <ul class="nav nav-pills flex-column k">
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon class="black-icon" size="large" name="bag-check-outline" class="test"></ion-icon><div class="text-none">Index</div></a></li>
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Order</div></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon  size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
 
                 <li class="nav-item">
                     <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon><div class="text-none">Manage</div></a>
@@ -215,15 +230,14 @@
 
                         <div class="center">
 
-                            <div class="head"><h3>Order</h3></div>
+                            <div class="head"><h1>Order</h1></div>
                             <div class="coll">
-                                <h3>ร้าน : @order.StoreName</h3>
+                                <h1>@order.StoreName</h1>
                                 <img src="@store.StoreImage">
                                 <div class='roww w-50 p-3'>
                                     @{
                                         int count = 0; // declare the count variable outside of the loop
                                     }
-
                                     @for (int i = 1; i <= 5; i++)
                                     {
 
@@ -232,8 +246,8 @@
                                         if (amount > 0 && count <= 3)
                                         {
                                             <div class="showmenu">
-                                                <h4>เมนู : @menu</h4>
-                                                <h4>จำนวน : @amount</h4>
+                                                <h1>Menu : @menu</h1>
+                                                <h1>Amount : @amount</h1>
                                             </div>
                                             count++;
                                         }
@@ -245,8 +259,8 @@
                                     }
                                 </div>
                                 <div class='roww w-50 p-3'>
-                                    <h4>สนานที่รับ : @order.Destination</h4>
-                                    <h4>สถานะ : @order.Status</h4>
+                                    <h1>Location : @order.Destination</h1>
+                                    <h1>Status : @order.Status</h1>
 
                                 </div>
                             </div>
@@ -264,8 +278,3 @@
     </div>
 
 </body>
-
-
-
-
-
