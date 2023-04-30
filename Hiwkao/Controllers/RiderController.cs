@@ -26,7 +26,7 @@ namespace Hiwkao.Controllers
             var viewModel = new OrderStoreViewModel();
             {
                 IEnumerable<Order> allOrders = _db.Orders;
-                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
+                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
                 viewModel.Orders = filteredOrders;
                 IEnumerable<Store> allStores = _db.Stores;
                 viewModel.Stores = allStores;

@@ -21,7 +21,7 @@
         background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
         background-size: cover;
         backdrop-filter: blur(150px);
-        background-repeat: repeat;
+        background-repeat: no-repeat;
     }
 
     .main {
@@ -42,24 +42,29 @@
         border-radius: 30px;
         border: none;
         background-size: 0px;
+        flex-direction: column;
+        justify-contentcontent: center;
     }
 
         .card .center {
+            margin-top: 0%;
             display: flex;
             flex-direction: column;
-            align-content: center;
+            justify-contentcontent: center;
             margin-bottom: 2%;
         }
 
             .card .center .coll {
                 display: flex;
                 flex-direction: row;
+                justify-content: center;
                 margin: 2%;
             }
 
                 .card .center .coll .roww {
                     display: flex;
                     flex-direction: column;
+                    justify-content: center;
                     margin-left: 1rem;
                     margin-top: 5rem;
                 }
@@ -72,6 +77,7 @@
         padding: 2%;
         color: white;
         opacity: 70%;
+        text-align: center;
     }
 
     h1 {
@@ -81,8 +87,8 @@
     img {
         display: flex;
         align-items: center;
-        width: 15rem;
-        height: 15rem;
+        width: 12rem;
+        height: 12rem;
         border-radius: 50%;
     }
 
@@ -121,31 +127,13 @@
     }
 
     .row {
-        height: 100%;
     }
 
         .row .widtho {
-            width: 6%;
-            background: grey;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            margin-right: 4%;
+            width: 7%;
         }
 
-        .row .widtho {
-            width: 3%;
-            background: rgba(0,0,0, 0.2);
-            margin: auto 0;
-            opacity: 50%;
-            height: 50vh;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            margin-right: 7%;
-            border-radius: 20px;
-        }
+
 
             .row .widtho .nav .nav-item {
                 width: 100%;
@@ -158,7 +146,7 @@
     }
 
 
-    @@media (max-width: 1023px;) {
+    @@media (min-width: 768px) and (max-width: 1025px) {
         body {
             background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
             background-size: contain;
@@ -168,10 +156,23 @@
         .main {
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
         .card {
             width: 80%;
+            height: 60%;
+        }
+
+            .card .center .coll {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+        img {
+            border-radius: 50%;
         }
     }
 
@@ -187,17 +188,22 @@
 
         ion-icon.black-icon {
             color: black;
-            transform: scale(1.5);
+            transform: scale(1.2);
             background-color: white;
             border-radius: 5px;
         }
 
-    text-none {
+    .text-none {
         display: none;
     }
 
     ion-icon:hover + .text-none {
+        margin-top: 2%;
         display: block;
+    }
+
+    .text-h2 {
+        margin-left: 5%;
     }
 </style>
 <body>
@@ -205,18 +211,19 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <div class="row">
         <div class="col-md-3 widtho">
-            <ul class="nav nav-pills flex-column k">
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon class="black-icon" size="large" name="bag-check-outline" class="test"></ion-icon><div class="text-none">Index</div></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Order</div></a></li>
+            <ul class="nav nav-pills flex-column ">
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><ion-icon size="large" name="home-outline"></ion-icon><div class="text-none">Home</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon class="black-icon" size="large" name="bag-check-outline"></ion-icon><div class="text-none">Index</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="storefront-outline"></ion-icon><div class="text-none">Order</div></a></li>
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
 
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon><div class="text-none">Manage</div></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="settings-outline"></ion-icon><div class="text-none">Manage</div></a>
                 </li>
 
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <a id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></a>
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="exit-outline"></ion-icon><div class="text-none">Logout</div></button>
                     </form>
                 </li>
             </ul>
@@ -227,47 +234,50 @@
                 {
                     var store = @Model.Stores.FirstOrDefault(s => s.name == order.StoreName);
                     <div class="card">
-
                         <div class="center">
-
-                            <div class="head"><h1>Order</h1></div>
+                            <div class="head"><h3>Order</h3></div>
+                            <div class="text-center pt-3 text-h2"><h2>@order.StoreName</h2></div>
                             <div class="coll">
-                                <h1>@order.StoreName</h1>
-                                <img src="@store.StoreImage">
-                                <div class='roww w-50 p-3'>
-                                    @{
-                                        int count = 0; // declare the count variable outside of the loop
-                                    }
-                                    @for (int i = 1; i <= 5; i++)
+                                <div class="roww w-25"><img src="@store.StoreImage"></div>
+
+                                @{
+                                    int count = 0; // declare the count variable outside of the loop
+                                }
+                                @for (int i = 1; i <= 5; i++)
+                                {
+
+                                    var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
+                                    var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
+                                    if (amount > 0 && count <= 3)
                                     {
 
-                                        var menu = (string)typeof(Order).GetProperty("Menu" + i).GetValue(order);
-                                        var amount = (int)typeof(Order).GetProperty("Amount" + i).GetValue(order);
-                                        if (amount > 0 && count <= 3)
-                                        {
-                                            <div class="showmenu">
-                                                <h1>Menu : @menu</h1>
-                                                <h1>Amount : @amount</h1>
-                                            </div>
-                                            count++;
-                                        }
-
+                                        <div class="showmenu roww w-25">
+                                            <h4>Menu : @menu</h4>
+                                            <h4>Amount : @amount</h4>
+                                        </div> 
+                                        count++;
                                     }
-                                    @if (count > 3)
-                                    {
-                                        <p>...</p>
-                                    }
-                                </div>
-                                <div class='roww w-50 p-3'>
-                                    <h1>Location : @order.Destination</h1>
-                                    <h1>Status : @order.Status</h1>
 
+                                }
+                                @if (count > 3)
+                                {
+                                    <p>...</p>
+                                }
+                                <div class='roww w-25'>
+                                    <h4>Location : @order.Destination</h4>
+                                    <h4>Status : @order.Status</h4>
                                 </div>
                             </div>
                             <div class="butcen"> <a class='button' asp-controller="Customer" asp-action="Cancel" asp-route-id="@order.OrderId"><i class="bi bi-x-circle"></i>Cancel</a></div>
-
                         </div>
                     </div>
+
+
+
+
+
+
+
                     <br />
                 }
 

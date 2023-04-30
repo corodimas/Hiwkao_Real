@@ -104,8 +104,12 @@
 <body>
     <div class="main">
         <div class="center">
+            <button type="button" class="button-rm"  onclick="location.href='@Url.Action("GoBack", "Customer")'">X</button>
             <img src="@ViewBag.StoreImage">
             <h1>@ViewData["StoreName"]</h1>
+            <div class="d-flex justify-content-center">
+                
+            </div>
             <form method="POST" asp-controller="Customer" asp-action="CreateOrder">
                 <div class="form-group">
                     <input type="text" asp-for="StoreName" class="form-control" value=@test hidden />

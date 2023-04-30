@@ -84,17 +84,10 @@ namespace Hiwkao.Controllers
         {
             var viewModel = new OrderStoreViewModel();
             {
-                // Filter the collection of Order objects based on your criteria
                 IEnumerable<Order> allOrders = _db.Orders;
                 IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && (o.Status == "Ongoing" || o.Status == "Arrive" || o.Status == "Canceling"));
-
-                // Assign the filtered collection to the Orders property of the viewModel
                 viewModel.Orders = filteredOrders;
-
-                // Retrieve the collection of Store objects from the database
                 IEnumerable<Store> allStores = _db.Stores;
-
-                // Assign the collection to the Stores property of the viewModel
                 viewModel.Stores = allStores;
             }
 
@@ -153,6 +146,13 @@ namespace Hiwkao.Controllers
 
 
             }
+        }
+
+        public ActionResult GoBack()
+        {
+
+           return RedirectToAction("Order");
+
         }
     }
 }
