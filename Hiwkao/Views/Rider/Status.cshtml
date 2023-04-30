@@ -234,7 +234,7 @@
         <div class="col-md-3 widtho">
             <ul class="nav nav-pills flex-column k">
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><ion-icon size="large" name="home-outline"></ion-icon><div class="text-none">Home</div></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Index"><ion-icon  size="large" name="bicycle-outline"></ion-icon><div class="text-none">Index</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Index"><ion-icon  size="large" name="bicycle-outline"></ion-icon><div class="text-none">Incoming</div></a></li>
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Rider" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
                 <li class="nav-item">
                     <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="settings-outline"></ion-icon><div class="text-none">Manage</div></a>
@@ -252,7 +252,7 @@
                 <div class="head">⏳ Status</div>
                 @if (!Model.Orders.Any())
                 {
-                    <h1>There are no ongoing orders to deliver at this time</h1>
+                    <h1 style="margin-top:25%">There are no ongoing orders to deliver at this time</h1>
                 }
                 @foreach (var order in Model.Orders)
                 {
