@@ -21,7 +21,9 @@
     body {
         background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
         background-size: cover;
-        backdrop-filter: blur(150px);
+        background-color: rgba(0,0,0,0.5);
+        -webkit-backdrop-filter: blur(70px);
+        backdrop-filter: blur(70px);
         background-repeat: repeat;
     }
 
@@ -244,6 +246,10 @@
         <div class="col-md-9">
             <div class="main">
                 <div class="head">⏳ Status</div>
+                @if (!Model.Orders.Any())
+                {
+                    <h1 style="margin-top:25%">No orders have been accepted yet.</h1>
+                }
                 @foreach (var order in Model.Orders)
                 {
                     var store = @Model.Stores.FirstOrDefault(s => s.name == order.StoreName);
