@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Hiwkao.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SampleLogin.Areas.Identity.Data;
@@ -21,18 +22,32 @@ namespace Hiwkao.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Order> allOrders = _db.Orders;
-            IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
 
-            return View(filteredOrders);
+            var viewModel = new OrderStoreViewModel();
+            {
+                IEnumerable<Order> allOrders = _db.Orders;
+                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
+                viewModel.Orders = filteredOrders;
+                IEnumerable<Store> allStores = _db.Stores;
+                viewModel.Stores = allStores;
+            }
+
+            return View(viewModel);
         }
 
         public IActionResult Status()
 
         {
-            IEnumerable<Order> allOrders = _db.Orders;
-            IEnumerable<Order> filteredOrders = allOrders.Where(o => o.RiderId == User.FindFirstValue(ClaimTypes.NameIdentifier) && (o.Status == "Ongoing" || o.Status == "Arrive" || o.Status == "Canceling"));
-            return View(filteredOrders);
+            var viewModel = new OrderStoreViewModel();
+            {
+                IEnumerable<Order> allOrders = _db.Orders;
+                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.RiderId == User.FindFirstValue(ClaimTypes.NameIdentifier) && (o.Status == "Ongoing" || o.Status == "Arrive" || o.Status == "Canceling"));
+                viewModel.Orders = filteredOrders;
+                IEnumerable<Store> allStores = _db.Stores;
+                viewModel.Stores = allStores;
+            }
+
+            return View(viewModel);
         }
 
         public IActionResult Accept(int? id)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Hiwkao.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SampleLogin.Areas.Identity.Data;
@@ -22,10 +23,23 @@ namespace Hiwkao.Controllers
         public IActionResult Index()
         {
 
-            IEnumerable<Order> allOrders = _db.Orders;
-            IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
-            ViewBag.StoreImage = _db.Stores;
-            return View(filteredOrders);
+            var viewModel = new OrderStoreViewModel();
+            {
+                // Filter the collection of Order objects based on your criteria
+                IEnumerable<Order> allOrders = _db.Orders;
+                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && o.Status == "Pending");
+
+                // Assign the filtered collection to the Orders property of the viewModel
+                viewModel.Orders = filteredOrders;
+
+                // Retrieve the collection of Store objects from the database
+                IEnumerable<Store> allStores = _db.Stores;
+
+                // Assign the collection to the Stores property of the viewModel
+                viewModel.Stores = allStores;
+            }
+
+            return View(viewModel);
         }
 
         public IActionResult Order()
@@ -68,10 +82,24 @@ namespace Hiwkao.Controllers
         public IActionResult Status()
 
         {
-            IEnumerable<Order> allOrders = _db.Orders;
-            IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && (o.Status == "Ongoing" || o.Status == "Arrive" || o.Status == "Canceling"));
+            var viewModel = new OrderStoreViewModel();
+            {
+                // Filter the collection of Order objects based on your criteria
+                IEnumerable<Order> allOrders = _db.Orders;
+                IEnumerable<Order> filteredOrders = allOrders.Where(o => o.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && (o.Status == "Ongoing" || o.Status == "Arrive" || o.Status == "Canceling"));
 
-            return View(filteredOrders);
+                // Assign the filtered collection to the Orders property of the viewModel
+                viewModel.Orders = filteredOrders;
+
+                // Retrieve the collection of Store objects from the database
+                IEnumerable<Store> allStores = _db.Stores;
+
+                // Assign the collection to the Stores property of the viewModel
+                viewModel.Stores = allStores;
+            }
+
+
+            return View(viewModel);
         }
 
         public IActionResult Cancel(int? id)

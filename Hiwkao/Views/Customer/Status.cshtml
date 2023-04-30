@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SampleLogin.Models.Order>;
+﻿@model Hiwkao.Models.OrderStoreViewModel;
 @using Microsoft.AspNetCore.Identity
 @using SampleLogin.Areas.Identity.Data
 @inject UserManager<ApplicationUser> UserManager
@@ -199,16 +199,18 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <div class="row">
         <div class="col-md-3 widtho">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon></a></li>
+            <ul class="nav nav-pills flex-column k">
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon size="large" name="bag-check-outline" class="test"></ion-icon><div class="text-none">Index</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Order</div></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon><div class="text-none">Status</div></a></li>
+
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon><div class="text-none">Manage</div></a>
                 </li>
+
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon></button>
+                        <a id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon><div class="text-none">Logout</div></a>
                     </form>
                 </li>
             </ul>
@@ -216,9 +218,10 @@
         <div class="col-md-9">
             <div class="main">
                 <div class="head">⏳ Status</div>
-                @foreach (var order in Model)
+                @foreach (var order in Model.Orders)
                 {
-                    if (order.Status == "Ongoing" || order.Status == "Arrive")
+                    var store = @Model.Stores.FirstOrDefault(s => s.name == order.StoreName);
+                    if (order.Status != "Success")
                     {
                         <div class="card">
                             <div class="center">
@@ -228,7 +231,7 @@
 
                                     </div>
                                     <div class="roww text-center">
-                                        <img src="https://s359.thaibuffer.com/rq/580/435/50/pagebuilder/dbc77e85-1cb6-44ff-a3d8-dc6b21f59d5a.jpg">
+                                        <img src="@store.StoreImage">
                                     </div>
                                     @for (int i = 1; i <= 5; i++)
                                     {
