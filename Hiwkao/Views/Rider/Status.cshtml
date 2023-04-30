@@ -19,11 +19,10 @@
     }
 
     body {
-        background-image: url("https://media.discordapp.net/attachments/1035127653205811261/1101739237407207464/IMG_0126.jpg?width=468&height=702");
+        background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
         background-size: cover;
-        backdrop-filter: blur(70px);
-        background-repeat: no-repeat;
-        background-position: center;
+        backdrop-filter: blur(150px);
+        background-repeat: repeat;
     }
 
     .main {
@@ -38,9 +37,11 @@
         display: flex;
         margin-top: 4%;
         width: 80%;
-        height: 30%;
-        background-color: rgba(198, 198, 198, 0.15);
-        border-radius: 20px;
+        height: 40%;
+        box-shadow: 0px 0px 20px rgba(255,255,255, 0.3);
+        background-color: rgba(35, 43, 43, 0.25);
+        border-radius: 30px;
+        border: none;
         background-size: 0px;
     }
 
@@ -106,19 +107,27 @@
     }
 
     .row .widtho {
-        width: 6%;
-        background: grey;
-        height: 100vh;
+        width: 3%;
+        background: rgba(0,0,0, 0.2);
+        margin: auto 0;
+        opacity: 50%;
+        height: 50vh;
         display: flex;
         justify-content: center;
         align-content: center;
-        margin-right: 4%;
+        margin-right: 7%;
+        border-radius: 20px;
     }
 
         .row .widtho .nav .nav-item {
-            width: 10%;
-            height: 10%;
+            width: 100%;
+            height: 20%;
+            background-color: transparent;
         }
+
+    .nav-link {
+        color: black;
+    }
 
     .heado {
         background-color: rgb(40, 69, 1);
@@ -128,9 +137,22 @@
         text-align: 2rem;
     }
 
-    ion-icon:hover {
+    ion-icon {
         color: white;
+        display: flex;
     }
+
+        ion-icon:hover {
+            color: black;
+            transform: scale(1.5);
+        }
+
+        ion-icon.black-icon {
+            color: black;
+            transform: scale(1.5);
+            background-color: white;
+            border-radius: 5px;
+        }
 
     @@media (max-width: 1023px) {
         body {
@@ -178,33 +200,31 @@
     <div class="row">
         <div class="col-md-3 widtho">
             <ul class="nav nav-pills flex-column">
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Store"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Status"><ion-icon size="large" name="bag-handle-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="RiderOrder"><ion-icon size="large" name="fast-food-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon></a></li>
                 <li class="nav-item">
-                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="fast-food-outline"></ion-icon></a>
-                </li></a>
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon></a>
                 </li>
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="fast-food-outline"></ion-icon></button>
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon></button>
                     </form>
                 </li>
             </ul>
         </div>
         <div class="col-md-9">
             <div class="main">
-                <div class="head">Status</div>
+                <div class="head">⏳ Status</div>
                 @foreach (var order in Model)
                 {
-                    if (order.Status != "Success")
+                    if (order.Status == "Ongoing" || order.Status == "Arrive")
                     {
                         <div class="card">
                             <div class="center">
                                 <div class="coll">
                                     <div class="roww text-center">
-                                        <h4>Order ID : @order.OrderId</h4>
+                                        <h1>Order ID : @order.OrderId</h1>
 
                                     </div>
                                     <div class="roww text-center">
@@ -218,8 +238,8 @@
                                         {
 
                                             <div class="roww">
-                                                <h4>เมนู : @menu</h4>
-                                                <h4>จำนวน : @amount</h4>
+                                                <h1>Menu : @menu</h1>
+                                                <h1>Amount : @amount</h1>
                                             </div>
 
 
@@ -256,4 +276,3 @@
     </div>
 
 </body>
-

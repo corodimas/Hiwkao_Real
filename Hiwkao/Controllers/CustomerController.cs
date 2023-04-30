@@ -38,7 +38,7 @@ namespace Hiwkao.Controllers
         {
             ViewData["StoreName"] = storeName;
             var obj = _db.Stores.FirstOrDefault(s => s.name == storeName);
-            ViewBag.StoreImage = obj;
+            ViewBag.StoreImage = obj.StoreImage;
             return View();
         }
 

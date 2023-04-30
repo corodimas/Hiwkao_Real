@@ -7,13 +7,16 @@
 *@
 @{
     Layout = null;
-
 }
+
 <link rel="stylesheet" type="text/css" href="~/css/Import.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 <style>
+    * {
+        font-family: 'poppins',sans-serif;
+    }
 
     body {
         background-image: url("https://cdn.discordapp.com/attachments/874217207360520203/1101567480050237621/0f024adf359d7b313e9e8c2472a0109c.jpg");
@@ -24,69 +27,84 @@
 
     .main {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: start;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .card {
-        padding: 3rem 0.5rem;
-        margin-bottom: 3%;
-        margin-left: 8%;
-        width: 16%;
-        background-color: rgba(35, 43, 43, 0.35);
-        border-radius: 40px;
+        margin-left: 10%;
+        display: flex;
+        margin-top: 4%;
+        width: 80%;
+        height: 40%;
+        box-shadow: 0px 0px 20px rgba(255,255,255, 0.3);
+        background-color: rgba(35, 43, 43, 0.25);
+        border-radius: 30px;
         border: none;
-        box-shadow: 0px 0px 20px rgba(0,0,0, 0.3);
+        background-size: 0px;
     }
 
         .card .center {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 2%;
         }
 
-    h1 {
-        text-align: right;
-        margin: 0 5% 3% 0;
+            .card .center .coll {
+                display: flex;
+                flex-direction: column;
+                margin: 2%;
+                width: 100%;
+            }
+
+                .card .center .coll .roww {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: 5rem;
+                    gap: 5%;
+                }
+
+    .head {
+        margin-left: 6rem;
+        font-size: 5rem;
     }
 
-    h4 {
+    h3 {
         text-align: center;
     }
 
-    .card .center img {
-        border-radius: 20px;
-        width: 80%;
-        height: 60%;
-    }
-
-    .card:hover {
-        box-shadow: 0px 0px 30px rgba(192,192,192, 0.5);
-        background-color: rgba(0, 26, 0,0.2)
+    img {
+        display: flex;
+        align-items: center;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
     }
 
     .button {
         display: flex;
-        transform: scale(1.5);
-        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        background-color: green;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgb(66, 156, 66);
         color: white;
-        border-radius: 20px;
-        padding: 0.35rem 2.5rem;
+        border-radius: 10px;
+        padding: 0.8rem 2.5rem;
         text-decoration: none;
     }
 
-        .button i {
-            margin: 0.1rem;
-        }
+    .butcen {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
 
-        .button:hover {
-            transform: scale(1.3);
-            background-color: black;
-            color: white;
-            box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
-        }
+    .button i {
+        margin: 0.1rem;
+    }
 
     .row .widtho {
         width: 3%;
@@ -111,23 +129,12 @@
         color: black;
     }
 
-
-
-    @@media (max-width: 1023px;) {
-        body {
-            background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
-            background-size: contain;
-            backdrop-filter: blur(70px);
-        }
-
-        .main {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card {
-            width: 80%;
-        }
+    .heado {
+        background-color: rgb(40, 69, 1);
+        border-radius: 20px 20px 0 0px;
+        width: 100%;
+        color: white;
+        text-align: 2rem;
     }
 
     ion-icon {
@@ -146,6 +153,46 @@
             background-color: white;
             border-radius: 5px;
         }
+
+    @@media (max-width: 1023px) {
+        body {
+            background-image: url("https://i.pinimg.com/564x/0f/02/4a/0f024adf359d7b313e9e8c2472a0109c.jpg");
+            background-size: cover;
+            backdrop-filter: blur(70px);
+            background-repeat: no-repeat;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+        }
+
+        .main .card {
+            padding: 3rem 0.5rem;
+            margin-bottom: 3%;
+            margin-left: 8%;
+            width: 100%;
+            background-color: rgba(198, 198, 198, 0.15);
+            background-size: 0px;
+            border-radius: 60px;
+        }
+
+        .row .widtho {
+            width: 15%;
+            background: grey;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin-right: 7%;
+        }
+    }
 </style>
 <body>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -154,13 +201,11 @@
         <div class="col-md-3 widtho">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon  size="large" name="bag-check-outline"></ion-icon></a></li>
-                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon"  size="large" name="fast-food-outline"></ion-icon></a></li>
-
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Order"><ion-icon size="large" name="bag-check-outline"></ion-icon></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Status"><ion-icon class="black-icon" size="large" name="fast-food-outline"></ion-icon></a></li>
                 <li class="nav-item">
                     <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><ion-icon size="large" name="restaurant-outline"></ion-icon></a>
                 </li>
-
                 <li class="nav-item">
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><ion-icon size="large" name="bag-check-outline"></ion-icon></button>
@@ -170,7 +215,7 @@
         </div>
         <div class="col-md-9">
             <div class="main">
-                <div class="head">Status</div>
+                <div class="head">⏳ Status</div>
                 @foreach (var order in Model)
                 {
                     if (order.Status == "Ongoing" || order.Status == "Arrive")
@@ -179,7 +224,7 @@
                             <div class="center">
                                 <div class="coll">
                                     <div class="roww text-center">
-                                        <h4>Order ID : @order.OrderId</h4>
+                                        <h1>Order ID : @order.OrderId</h1>
 
                                     </div>
                                     <div class="roww text-center">
@@ -193,8 +238,8 @@
                                         {
 
                                             <div class="roww">
-                                                <h4>เมนู : @menu</h4>
-                                                <h4>จำนวน : @amount</h4>
+                                                <h1>Menu : @menu</h1>
+                                                <h1>Amount : @amount</h1>
                                             </div>
 
 
@@ -202,8 +247,8 @@
                                         }
                                     }
                                     <div class="roww">
-                                        <h4>ที่รับ : @order.Destination</h4>
-                                        <h4>ชื่อ Rider : @UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</h4>
+                                        <h1>Location : @order.Destination</h1>
+                                        <h1>Rider : @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).FirstName @UserManager.Users.FirstOrDefault(u=> u.Id == order.RiderId).LastName</h1>
                                     </div>
                                     @if (order.Status == "Arrive")
                                     {
@@ -236,4 +281,3 @@
     </div>
 
 </body>
-

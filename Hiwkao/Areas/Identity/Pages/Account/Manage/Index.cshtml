@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
-    Layout = null;
 }
 <style>
     body {
@@ -93,7 +92,6 @@
                     <!--<h2 class="text-center">@ViewData["Title"]</h2>-->
                     <form class="itext d-flex justify-content-center align-self-center" id="profile-form" method="post" enctype="multipart/form-data">
                         <div class="">
-                            
                             <div class="col-md-6 d-flex align-content-center">
                                 <div class="form-group">
                                     <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
@@ -125,12 +123,11 @@
                                     <label asp-for="Input.PhoneNumber" class="form-label"></label>
                                     <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                                 </div>
-                                <div>
-                                    <button id="update-profile-button" type="submit" class="d-flex justify-content-center">Save</button>
-                                </div>
+                            </div>
+                            <div class="button">
+                                <button id="update-profile-button" type="submit" class="d-flex justify-content-center">Save</button>
                             </div>
                         </div>
-                        
                         
                     </form>
                 </div>
